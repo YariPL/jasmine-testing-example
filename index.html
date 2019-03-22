@@ -67,7 +67,7 @@
 
         // describe to group things together
         describe('Write Your Test Group Descriptions Here', () => {
-            // it is a test 
+            // it is a test container
             it('Write Your Test Expectation Here', () => {
                 // arrange -> setup data to test against
                 let bool = false;
@@ -80,7 +80,14 @@
 
 
                 // to run this all using sublime server
-            })
+            });
+
+            // it can contain multiple tests
+            // all of them must return true for block to pass the test
+            it("should consider this spec", function() {
+              expect(true).toBe(true);
+              expect(false).not.toBe(false);
+            });
         });
     </script>
 </head>
