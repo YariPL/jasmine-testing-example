@@ -9,6 +9,7 @@
     <script type="text/javascript" src="./jasmine/boot.js"></script>
 
     <script>
+        // function to be tested
         function getOpposite(bool) {
             return !bool;
         }
@@ -22,7 +23,7 @@
                 // act -> taking some action(check)
                 const result = getOpposite(bool);
 
-                // assert 
+                // assert -> expectations
                 expect(result).toBe(true);
             })
         });
