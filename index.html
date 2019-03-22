@@ -14,19 +14,55 @@
             return !bool;
         }
 
+        function add(x, y) {
+            return x + y;
+        }
+
+        function minus(x, y) {
+            return x - y;
+        }
+
         // describe to group things together
         describe('Math Functions', () => {
+
+            let num1;
+            let num2;
+            // running before each test running
+            beforeEach(() => {
+                num1 = 2;
+                num2 = 3;
+            })
+
             it('Gets the Sum of 2 Numbers', () => {
                 // arrange
-                const num1 = 2;
-                const num2 = 3;
+                // const num1 = 2;
+                // const num2 = 3;
 
                 // act
                 const result = add(num1, num2);
 
                 // arrange
                 expect(result).toBe(5);
+                // expect(result).toBeGreaterThan(6);
+                // expect(result).not.toBeGreaterThan(6);
+                // expect(result + 1).toBe(6);
+
+            });
+            // fit to focus just on this test (focus it)
+            // xit to ingore just this tesxt
+              it('Returms subtracted value', () => {
+                // arrange
+                const num1 = 2;
+                const num2 = 3;
+
+                // act
+                const result = minus(num1, num2);
+
+                // arrange
+                expect(result + 1).toBe(0);
+
             })
+
         })
 
         // describe to group things together
