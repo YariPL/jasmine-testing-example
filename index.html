@@ -84,11 +84,95 @@
 
             // it can contain multiple tests
             // all of them must return true for block to pass the test
-            it("should consider this spec", function() {
+            it("should consider this spec", () => {
               expect(true).toBe(true);
-              expect(false).not.toBe(false);
+              expect(false).not.toBe(true);
             });
         });
+
+        // testing asynchronous code
+        // function to change finished to true
+        function finish() {
+            finished = true;
+        }
+        let finished = false;
+        describe('asynchronous',() => {
+            // run before each test
+            beforeEach(() => {
+                // imitate asynchronous
+                setTimeout(function() {
+                    finished = false;
+                },333222222223);
+            });
+            it('should finish',function() {
+                finish();
+                // expect asynchronous to finish
+                // not important how much it will take
+                expect(finished).toBe(true);
+            })
+        })
+        describe("The 'toEqual' matcher", () => {
+            // check if equal
+            it("should work for objects", () => {
+                let foo = {
+                    a: 12,
+                    b: 34
+                };
+                let bar = {
+                    a: 12,
+                    b: 34
+                };
+                expect(foo).toEqual(bar);
+            });
+            // working with regular expressions
+            it("The 'toMatch' matcher is for regular expressions", () => {
+                let message = "foo bar baz";
+
+                expect(message).toMatch(/bar/);
+                expect(message).toMatch("bar");
+                expect(message).not.toMatch(/quux/);
+            });
+            // check undefined - defined
+            it("should be defined/not undefined/null", () => {
+                let a = {
+                  foo: "foo"
+                };
+                var foo = null;
+
+                // test if defined
+                expect(a.foo).toBeDefined();
+                expect(a.bar).not.toBeDefined();
+                // check if undefined
+                expect(a.foo).not.toBeUndefined();
+                expect(a.bar).toBeUndefined();
+                // check for null / not null
+                expect(foo).toBeNull();
+                expect(a).not.toBeNull();
+            });
+            // here should be toBe(true) , toBeTruthy(), toBeTrue()
+                // toBe(true) check if exactly the same value
+                // toBeTrue check if value is true boolean
+
+            // 
+            it("The 'toBeTruthy'/ 'toBeFalsy' matcher is for boolean casting testing", function() {
+                var a, foo = "foo";
+
+                // check if value is counted as true or false
+                // a = false
+                // foo = true
+
+                expect(foo).toBeTruthy();
+                expect(a).not.toBeTruthy();
+
+                expect(a).toBeFalsy();
+                expect(foo).not.toBeFalsy();
+
+            });
+            
+
+        });
+
+
     </script>
 </head>
 
