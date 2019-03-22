@@ -1,179 +1,229 @@
 <html>
 
 <head>
-    <link rel="shortcut icon" type="image/png" href="./jasmine/jasmine_favicon.png">
-    <link rel="stylesheet" type="text/css" href="./jasmine/jasmine.css">
+	<link rel="shortcut icon" type="image/png" href="./jasmine/jasmine_favicon.png">
+	<link rel="stylesheet" type="text/css" href="./jasmine/jasmine.css">
 
-    <script type="text/javascript" src="./jasmine/jasmine.js"></script>
-    <script type="text/javascript" src="./jasmine/jasmine-html.js"></script>
-    <script type="text/javascript" src="./jasmine/boot.js"></script>
+	<script type="text/javascript" src="./jasmine/jasmine.js"></script>
+	<script type="text/javascript" src="./jasmine/jasmine-html.js"></script>
+	<script type="text/javascript" src="./jasmine/boot.js"></script>
 
-    <script>
-        // functions to be tested
-        function getOpposite(bool) {
-            return !bool;
-        }
+	<script>
+		// functions to be tested
+		function getOpposite(bool) {
+			return !bool;
+		}
 
-        function add(x, y) {
-            return x + y;
-        }
+		function add(x, y) {
+			return x + y;
+		}
 
-        function minus(x, y) {
-            return x - y;
-        }
+		function minus(x, y) {
+			return x - y;
+		}
 
-        // describe to group things together
-        describe('Math Functions', () => {
+		// describe to group things together
+		describe('Math Functions', () => {
 
-            let num1;
-            let num2;
-            // running before each test running
-            beforeEach(() => {
-                num1 = 2;
-                num2 = 3;
-            })
+			let num1;
+			let num2;
+			// running before each test running
+			beforeEach(() => {
+				num1 = 2;
+				num2 = 3;
+			})
 
-            it('Gets the Sum of 2 Numbers', () => {
-                // arrange
-                // const num1 = 2;
-                // const num2 = 3;
+			it('Gets the Sum of 2 Numbers', () => {
+				// arrange
+				// const num1 = 2;
+				// const num2 = 3;
 
-                // act
-                const result = add(num1, num2);
+				// act
+				const result = add(num1, num2);
 
-                // arrange
-                expect(result).toBe(5);
-                // expect(result).toBeGreaterThan(6);
-                // expect(result).not.toBeGreaterThan(6);
-                // expect(result + 1).toBe(6);
+				// arrange
+				expect(result).toBe(5);
+				// expect(result).toBeGreaterThan(6);
+				// expect(result).not.toBeGreaterThan(6);
+				// expect(result + 1).toBe(6);
 
-            });
-            // fit to focus just on this test (focus it)
-            // xit to ingore just this tesxt
-              it('Returms subtracted value', () => {
-                // arrange
-                const num1 = 2;
-                const num2 = 3;
+			});
+			// fit to focus just on this test (focus it)
+			// xit to ingore just this tesxt
+			  it('Returms subtracted value', () => {
+				// arrange
+				const num1 = 2;
+				const num2 = 3;
 
-                // act
-                const result = minus(num1, num2);
+				// act
+				const result = minus(num1, num2);
 
-                // arrange
-                expect(result + 1).toBe(0);
+				// arrange
+				expect(result + 1).toBe(0);
 
-            })
+			})
 
-        })
+		})
 
-        // describe to group things together
-        describe('Write Your Test Group Descriptions Here', () => {
-            // it is a test container
-            it('Write Your Test Expectation Here', () => {
-                // arrange -> setup data to test against
-                let bool = false;
+		// describe to group things together
+		describe('Write Your Test Group Descriptions Here', () => {
+			// it is a test container
+			it('Write Your Test Expectation Here', () => {
+				// arrange -> setup data to test against
+				let bool = false;
 
-                // act -> taking some action(check)
-                const result = getOpposite(bool);
+				// act -> taking some action(check)
+				const result = getOpposite(bool);
 
-                // assert -> expectations
-                expect(result).toBe(true);
-
-
-                // to run this all using sublime server
-            });
-
-            // it can contain multiple tests
-            // all of them must return true for block to pass the test
-            it("should consider this spec", () => {
-              expect(true).toBe(true);
-              expect(false).not.toBe(true);
-            });
-        });
-
-        // testing asynchronous code
-        // function to change finished to true
-        function finish() {
-            finished = true;
-        }
-        let finished = false;
-        describe('asynchronous',() => {
-            // run before each test
-            beforeEach(() => {
-                // imitate asynchronous
-                setTimeout(function() {
-                    finished = false;
-                },333222222223);
-            });
-            it('should finish',function() {
-                finish();
-                // expect asynchronous to finish
-                // not important how much it will take
-                expect(finished).toBe(true);
-            })
-        })
-        describe("The 'toEqual' matcher", () => {
-            // check if equal
-            it("should work for objects", () => {
-                let foo = {
-                    a: 12,
-                    b: 34
-                };
-                let bar = {
-                    a: 12,
-                    b: 34
-                };
-                expect(foo).toEqual(bar);
-            });
-            // working with regular expressions
-            it("The 'toMatch' matcher is for regular expressions", () => {
-                let message = "foo bar baz";
-
-                expect(message).toMatch(/bar/);
-                expect(message).toMatch("bar");
-                expect(message).not.toMatch(/quux/);
-            });
-            // check undefined - defined
-            it("should be defined/not undefined/null", () => {
-                let a = {
-                  foo: "foo"
-                };
-                var foo = null;
-
-                // test if defined
-                expect(a.foo).toBeDefined();
-                expect(a.bar).not.toBeDefined();
-                // check if undefined
-                expect(a.foo).not.toBeUndefined();
-                expect(a.bar).toBeUndefined();
-                // check for null / not null
-                expect(foo).toBeNull();
-                expect(a).not.toBeNull();
-            });
-            // here should be toBe(true) , toBeTruthy(), toBeTrue()
-                // toBe(true) check if exactly the same value
-                // toBeTrue check if value is true boolean
-
-            // 
-            it("The 'toBeTruthy'/ 'toBeFalsy' matcher is for boolean casting testing", function() {
-                var a, foo = "foo";
-
-                // check if value is counted as true or false
-                // a = false
-                // foo = true
-
-                expect(foo).toBeTruthy();
-                expect(a).not.toBeTruthy();
-
-                expect(a).toBeFalsy();
-                expect(foo).not.toBeFalsy();
-
-            });
-            
-
-        });
+				// assert -> expectations
+				expect(result).toBe(true);
 
 
-    </script>
+				// to run this all using sublime server
+			});
+
+			// it can contain multiple tests
+			// all of them must return true for block to pass the test
+			it("should consider this spec", () => {
+			  expect(true).toBe(true);
+			  expect(false).not.toBe(true);
+			});
+		});
+
+		// testing asynchronous code
+		// function to change finished to true
+		function finish() {
+			finished = true;
+		}
+		let finished = false;
+		describe('asynchronous',() => {
+			// run before each test
+			beforeEach(() => {
+				// imitate asynchronous
+				setTimeout(()=> {
+					finished = false;
+				},333222222223);
+			});
+			it('should finish',()=> {
+				finish();
+				// expect asynchronous to finish
+				// not important how much it will take
+				expect(finished).toBe(true);
+			})
+		})
+		describe("The 'toEqual' matcher", () => {
+			// check if equal
+			it("should work for objects", () => {
+				let foo = {
+					a: 12,
+					b: 34
+				};
+				let bar = {
+					a: 12,
+					b: 34
+				};
+				expect(foo).toEqual(bar);
+			});
+			// working with regular expressions
+			it("The 'toMatch' matcher is for regular expressions", () => {
+				let message = "foo bar baz";
+
+				expect(message).toMatch(/bar/);
+				expect(message).toMatch("bar");
+				expect(message).not.toMatch(/quux/);
+			});
+			// check undefined - defined
+			it("should be defined/not undefined/null", () => {
+				let a = {
+				  foo: "foo"
+				};
+				let foo = null;
+
+				// test if defined
+				expect(a.foo).toBeDefined();
+				expect(a.bar).not.toBeDefined();
+				// check if undefined
+				expect(a.foo).not.toBeUndefined();
+				expect(a.bar).toBeUndefined();
+				// check for null / not null
+				expect(foo).toBeNull();
+				expect(a).not.toBeNull();
+			});
+			// here should be toBe(true) , toBeTruthy(), toBeTrue()
+				// toBe(true) check if exactly the same value
+				// toBeTrue check if value is true boolean
+			// 
+			it("The 'toBeTruthy'/ 'toBeFalsy' matcher is for boolean casting testing", ()=> {
+				let a, foo = "foo";
+
+				// check if value is counted as true or false
+				// a = false
+				// foo = true
+
+				expect(foo).toBeTruthy();
+				expect(a).not.toBeTruthy();
+
+				expect(a).toBeFalsy();
+				expect(foo).not.toBeFalsy();
+
+			});
+
+
+		});
+		describe("The 'toContain' matcher", ()=> {
+			it("works for finding an item in an Array", ()=> {
+				let a = ["foo", "bar", "baz"];
+
+				expect(a).toContain("bar");
+				expect(a).not.toContain("quux");
+			});
+
+			it("also works for finding a substring", ()=> {
+				let a = "foo bar baz";
+
+				expect(a).toContain("bar");
+				expect(a).not.toContain("quux");
+			});
+		});
+		describe("Mathematical stuff", ()=> {
+
+			it("The 'toBeLessThan' / 'toBeGreaterThan' matcher is for mathematical comparisons", ()=> {
+				let pi = 3.1415926;
+				let e = 2.78;
+
+				// check less / greater than 
+				expect(e).toBeLessThan(pi);
+				expect(pi).not.toBeLessThan(e);
+
+				expect(pi).toBeGreaterThan(e);
+				expect(e).not.toBeGreaterThan(pi);
+			});
+
+			// NEED TO CHECK!
+			it("The 'toBeCloseTo' matcher is for precision math comparison", ()=> {
+				let pi = 3.1415926;
+				let e = 2.78;
+
+				expect(pi).not.toBeCloseTo(e, 2);
+				expect(pi).toBeCloseTo(e, 0);
+			});
+		});
+		describe('error thrown', ()=> {
+			 it("The 'toThrowError' matcher is for testing a specific thrown exception", ()=> {
+			    let foo = function() {
+			      throw new TypeError("foo bar baz");
+			    };
+
+			    expect(foo).toThrowError("foo bar baz");
+			    expect(foo).toThrowError(/bar/);
+			    expect(foo).toThrowError(TypeError);
+			    expect(foo).toThrowError(TypeError, "foo bar baz");
+			});
+		})
+
+
+
+	</script>
 </head>
 
 </html>
