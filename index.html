@@ -9,10 +9,26 @@
     <script type="text/javascript" src="./jasmine/boot.js"></script>
 
     <script>
-        // function to be tested
+        // functions to be tested
         function getOpposite(bool) {
             return !bool;
         }
+
+        // describe to group things together
+        describe('Math Functions', () => {
+            it('Gets the Sum of 2 Numbers', () => {
+                // arrange
+                const num1 = 2;
+                const num2 = 3;
+
+                // act
+                const result = add(num1, num2);
+
+                // arrange
+                expect(result).toBe(5);
+            })
+        })
+
         // describe to group things together
         describe('Write Your Test Group Descriptions Here', () => {
             // it is a test 
@@ -25,9 +41,13 @@
 
                 // assert -> expectations
                 expect(result).toBe(true);
+
+
+                // to run this all using sublime server
             })
         });
     </script>
 </head>
 
 </html>
+
