@@ -217,42 +217,58 @@
 		});
 
 		// here if become difficult 
-
-		// testing asynchronous code
-		// function to change finished to true
-		function finish() {
-			finished = true;
-		}
-		let finished = false;
-		describe('asynchronous',() => {
-			// run before each test
-			beforeEach(() => {
-				// imitate asynchronous
+		// asynchronous
+		class Robot {
+			constructor() {
+				this.meters = 0;
+				this.motion = 'stopped';
+			}
+			runMeters(meters) {
+				let timeToRun = meters * 1000 * Math.random();
+				this.motion = 'running';
+				
 				setTimeout(()=> {
-					finished = false;
-				},333222222223);
+					this.motion = 'stopped';
+					this.meters = meters;
+				},this.timeToRun);
+			}
+
+		}
+		// testing asynchronous code
+		describe('asyn Robot',() => {
+			// before running test we create class
+			// call method and 'done()' wait for beforeEach to finish
+			// then test runs
+			beforeEach((done)=> {
+				robot = new Robot();
+
+				robot.runMeters(5);
+				done();
 			});
-			it('should finish',()=> {
-				finish();
-				// expect asynchronous to finish
-				// not important how much it will take
-				expect(finished).toBe(true);
+			it('should run 5 meters and stop',()=> {
+			
+				expect(robot.motion).toBe('stopped');
+				expect(robot.meters).toBe(5);
 			})
 		})
+
+
+
+
 		// strange - not sure how this is working
 		// check if smth was called(with some param)
+		
+		// define class 
+		class authorization {
+			constructor(){}
+			send(){}
+		}
+		// create class
+		const auth = new authorization();
+		
 		describe('check if method in object was called',() => {
-			beforeEach(() => {
-				
-			});
 			it('auth.send should be called',() => {
-				// define class 
-				class authorization {
-					constructor(){}
-					send(){}
-				}
-				// create class
-				const auth = new authorization();
+				
 				// setSpy
 				spyOn(auth, 'send');  
 				// call method
