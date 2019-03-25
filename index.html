@@ -218,6 +218,7 @@
 
 		// here if become difficult 
 		// asynchronous
+		// class(es6) Robot
 		class Robot {
 			constructor() {
 				this.meters = 0;
@@ -234,7 +235,10 @@
 			}
 
 		}
-		// testing asynchronous code
+
+		// testing asynchronous code with done()
+		// spyOn -> check if smth was called(with some param) - working with asyn
+
 		describe('asyn Robot',() => {
 			// before running test we create class
 			// call method and 'done()' wait for beforeEach to finish
@@ -246,17 +250,37 @@
 				done();
 			});
 			it('should run 5 meters and stop',()=> {
-			
+				
+				// expectations for test
 				expect(robot.motion).toBe('stopped');
 				expect(robot.meters).toBe(5);
+
 			})
 		})
+		// also there are async - await
+		describe("Testing async functions", () => {
+  
+		  it("Should work with async/await", async () => {
+		    // Arrange
+		    let flag = false;
 
+		    // Act
+		    flag = await returnTrueAsync();
 
-
+		    // Assert
+		    expect(flag).toBeTruthy();
+		  }); 
+		  
+		});
+		function returnTrueAsync() {
+		  return new Promise(resolve => {
+		    setTimeout(() => {
+		      resolve(true);
+		    }, 1000);
+		  });
+		}
 
 		// strange - not sure how this is working
-		// check if smth was called(with some param)
 		
 		// define class 
 		class authorization {
@@ -267,6 +291,9 @@
 		const auth = new authorization();
 		
 		describe('check if method in object was called',() => {
+			
+				
+			
 			it('auth.send should be called',() => {
 				
 				// setSpy
