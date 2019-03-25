@@ -91,27 +91,7 @@
 			});
 		});
 
-		// testing asynchronous code
-		// function to change finished to true
-		function finish() {
-			finished = true;
-		}
-		let finished = false;
-		describe('asynchronous',() => {
-			// run before each test
-			beforeEach(() => {
-				// imitate asynchronous
-				setTimeout(()=> {
-					finished = false;
-				},333222222223);
-			});
-			it('should finish',()=> {
-				finish();
-				// expect asynchronous to finish
-				// not important how much it will take
-				expect(finished).toBe(true);
-			})
-		})
+		
 		describe("The 'toEqual' matcher", () => {
 			// check if equal
 			it("should work for objects", () => {
@@ -253,7 +233,27 @@
 				expect(divWithClass).not.toHaveClass('t_rex');
 			});
 		});
-
+		// testing asynchronous code
+		// function to change finished to true
+		function finish() {
+			finished = true;
+		}
+		let finished = false;
+		describe('asynchronous',() => {
+			// run before each test
+			beforeEach(() => {
+				// imitate asynchronous
+				setTimeout(()=> {
+					finished = false;
+				},333222222223);
+			});
+			it('should finish',()=> {
+				finish();
+				// expect asynchronous to finish
+				// not important how much it will take
+				expect(finished).toBe(true);
+			})
+		})
 
 	</script>
 </head>
