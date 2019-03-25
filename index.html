@@ -151,25 +151,7 @@
 
 
 		});
-		// strange
-		describe('check if method in object was called',()=>{
-
-			it('should be called',() => {
-				// define class 
-				class authorization {
-					constructor(){}
-					send(){}
-				}
-				// create class
-				const auth = new authorization();
-				// setSpy
-				spyOn(auth, 'send');  
-				// call method
-				auth.send();
-
-				expect(auth.send).toHaveBeenCalled();
-			});
-		});
+		
 		//
 		describe("The 'toContain' matcher", ()=> {
 			it("works for finding an item in an Array", ()=> {
@@ -233,6 +215,9 @@
 				expect(divWithClass).not.toHaveClass('t_rex');
 			});
 		});
+
+		// here if become difficult 
+
 		// testing asynchronous code
 		// function to change finished to true
 		function finish() {
@@ -254,6 +239,28 @@
 				expect(finished).toBe(true);
 			})
 		})
+		// strange - not sure how this is working
+		// check if smth was called(with some param)
+		describe('check if method in object was called',() => {
+			beforeEach(() => {
+				
+			});
+			it('auth.send should be called',() => {
+				// define class 
+				class authorization {
+					constructor(){}
+					send(){}
+				}
+				// create class
+				const auth = new authorization();
+				// setSpy
+				spyOn(auth, 'send');  
+				// call method
+				auth.send();
+
+				expect(auth.send).toHaveBeenCalled();
+			});
+		});
 
 	</script>
 </head>
